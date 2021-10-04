@@ -72,7 +72,7 @@ namespace ProjectEuler
 
             for (int i = 2; i < seiveOfEranthosenes.Length; i++)
             {
-                Console.Write(i+"\r");
+                //Console.Write(i+"\r");
                 if (seiveOfEranthosenes[i] != 0)
                 {
                     ans = (i * 1.0) / (i - 1);
@@ -92,7 +92,7 @@ namespace ProjectEuler
                         }
                     }
 
-                    totientFunc = 1.0 + (i - 2)*1.0 - totientFunc;
+                    totientFunc = 1.0 + (i - 2) * 1.0 - totientFunc;
                     ans = (i * 1.0) / totientFunc;
                 }
 
