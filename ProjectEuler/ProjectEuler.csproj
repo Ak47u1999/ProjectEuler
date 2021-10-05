@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <StartupObject>ProjectEuler.Problem69</StartupObject>
+    <StartupObject>ProjectEuler.Problem70</StartupObject>
   </PropertyGroup>
 
 </Project>
