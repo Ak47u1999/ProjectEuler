@@ -92,7 +92,7 @@ namespace ProjectEuler
 
             int[] seiveOfEranthosenes = new int[1000001];
             int[,] primeFactorization = new int[1000001, 50];
-            double ans,ansMax=-100,totientFunc=0.0;
+            decimal ans,ansMax=-100,totientFuncToNRatio=0.0M;
             int nMax=0,n=1;
 
             for (int i = 0; i < seiveOfEranthosenes.Length; i++)
@@ -115,11 +115,34 @@ namespace ProjectEuler
                 }
             }
 
-            for (int i = 0; i <= primeFactorization[56898,0]; i++)
+            for (int i = 2; i < seiveOfEranthosenes.Length; i++)
             {
-                Console.WriteLine(primeFactorization[56898,i]);
+                if (seiveOfEranthosenes[i] == 0)
+                {
+                    totientFuncToNRatio = 1.0M;
+                    for (int j = 1; j <= primeFactorization[i, 0]; j++)
+                    {
+                        totientFuncToNRatio *= (1.0M - (1.0M / primeFactorization[i, j]));
+                    }
+
+                    totientFuncToNRatio = 1.0m / (totientFuncToNRatio);
+                    //Console.WriteLine(i + "-" + totientFuncToNRatio);
+                }
+                else
+                {
+                    totientFuncToNRatio = (i * 1.0M) / (i - 1);
+                }
+
+                if (totientFuncToNRatio > ansMax)
+                {
+                    ansMax = totientFuncToNRatio;
+                    nMax = i;
+                }
+
+                //Console.WriteLine(i+"-"+totientFuncToNRatio);
             }
 
+            Console.WriteLine(nMax);
 
             //System Diagnostics........................... 
             watch.Stop();
