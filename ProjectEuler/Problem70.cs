@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
+using System.Diagnostics;
 
 namespace ProjectEuler
 {
@@ -82,7 +83,7 @@ namespace ProjectEuler
                 }
             }
 
-            for (int i = 2; i < seiveOfEranthosenes.Length; i++)
+            for (int i = seiveOfEranthosenes.Length -1; i > 2; i--)
             {
                 if (seiveOfEranthosenes[i] == 0)
                 {
@@ -119,6 +120,9 @@ namespace ProjectEuler
 
             //System Diagnostics........................... 
             watch.Stop();
+
+            Process proc = Process.GetCurrentProcess();
+            Console.WriteLine($"Memory Used: {Convert.ToDecimal(proc.PrivateMemorySize64/(1024*1024))} MB");
 
             Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
             //.............................................
