@@ -15,31 +15,22 @@ namespace ProjectEuler
             watch.Start();
             //.............................................
 
-            //Farey's Sequence (Use Stern brocot tree)
+            //https://www.mathblog.dk/project-euler-71-proper-fractions-ascending-order/
 
-            int n = 100, a = 0, b = 1, c = 1, d = n, p, q;
-            BigInteger totalTerms = 1;
-            decimal temp;
+            long a = 3, b = 7, p, r = 0, s = 1;
 
-            while (true)
+            for (long q = 1000000; q >= 2; q--)
             {
-                temp = (n + b) / d;
-                p = Convert.ToInt32(Math.Floor(temp)) * c - a;
+                p = (a * q - 1) / b;
 
-                q = Convert.ToInt32(Math.Floor(temp)) * d - b;
-
-                totalTerms++;
-                if (p == 3 && q == 7)
+                if (r * q < p * s)
                 {
-                    Console.WriteLine(c + "/" + d+" totalterms: "+totalTerms);
-                    break;
+                    r = p;
+                    s = q;
                 }
-
-                a = c;b = d;
-                c = p;d = q;
             }
 
-
+            Console.WriteLine(r + "/" + s);
             //System Diagnostics........................... 
             watch.Stop();
 
